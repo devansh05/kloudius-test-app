@@ -7,4 +7,12 @@ module.exports = defineConfig([
   {
     ignores: ['dist/*'],
   },
+  {
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    extends: ['prettier'],
+    plugins: ['prettier'],
+    rules: {
+      'prettier/prettier': 'error',
+    },
+  },
 ]);
