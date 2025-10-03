@@ -31,17 +31,21 @@ export const ButtonWithBackground: React.FC<
       </Text>
     </View>
   );
-  if (props.disabled) {
-    return content;
-  }
+
+  const handlePress = () => {
+    if (!props.disabled && props.onPress) {
+      props.onPress();
+    }
+  };
+
   if (Platform.OS === 'android') {
     return (
-      <TouchableNativeFeedback onPress={props.onPress}>
+      <TouchableNativeFeedback onPress={handlePress}>
         {content}
       </TouchableNativeFeedback>
     );
   }
-  return <TouchableOpacity onPress={props.onPress}>{content}</TouchableOpacity>;
+  return <TouchableOpacity onPress={handlePress}>{content}</TouchableOpacity>;
 };
 
 const styles = StyleSheet.create({

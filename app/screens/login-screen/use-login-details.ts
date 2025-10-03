@@ -36,9 +36,24 @@ export const useLoginDetails = () => {
   });
 
   const switchAuthModeHandler = () => {
-    setAuthMode((prevState: AuthMode) =>
-      prevState === 'login' ? 'signup' : 'login'
-    );
+    setAuthMode((prevState: AuthMode) => {
+      const newMode = prevState === 'login' ? 'signup' : 'login';
+
+      // Reset confirm password when switching to login mode
+      if (newMode === 'login') {
+        setControls(prevControls => ({
+          ...prevControls,
+          confirmPassword: {
+            ...prevControls.confirmPassword,
+            value: '',
+            valid: false,
+            touched: false,
+          },
+        }));
+      }
+
+      return newMode;
+    });
   };
 
   const togglePasswordVisibility = () => {

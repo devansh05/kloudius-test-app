@@ -25,6 +25,66 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
+## Testing
+
+This project includes comprehensive testing setup with React Testing Library and Jest.
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+
+# Use the custom test script for more options
+./scripts/test.sh help
+```
+
+### Test Structure
+
+- **Component Tests**: Testing individual UI components
+- **Screen Tests**: Testing complete screen functionality
+- **Hook Tests**: Testing custom React hooks
+- **Integration Tests**: Testing component interactions
+
+For detailed testing documentation, see [TESTING.md](./TESTING.md).
+
+### Coverage
+
+The project maintains high test coverage standards:
+
+- Branches: 80%+
+- Functions: 80%+
+- Lines: 80%+
+- Statements: 80%+
+
+## Code Quality
+
+### Linting and Formatting
+
+```bash
+# Run ESLint
+npm run lint
+
+# Check code formatting
+npm run format:check
+
+# Auto-fix formatting
+npm run format
+```
+
+### CI Pipeline
+
+```bash
+# Run complete CI pipeline (lint + format + test + coverage)
+./scripts/test.sh ci
+```
+
 ## Get a fresh project
 
 When you're ready, run:

@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useUserContext } from '../../context/user-context';
 
 export const useHomeScreen = () => {
@@ -5,10 +6,12 @@ export const useHomeScreen = () => {
     useUserContext();
   console.log('isAuthenticated', isAuthenticated);
 
-  const handleLogout = () => {
-    clearUserAuth();
+  const handleLogout = useCallback(() => {
+    if (clearUserAuth) {
+      clearUserAuth();
+    }
     // Screen will automatically change to Login when isAuthenticated becomes false
-  };
+  }, [clearUserAuth]);
 
   return {
     handleLogout,
